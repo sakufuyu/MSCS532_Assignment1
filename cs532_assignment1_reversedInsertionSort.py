@@ -66,13 +66,51 @@ def generate_random_list(size: int) -> list[int]:
     return [random.randint(0, 100) for _ in range(size)]
 
 
-if __name__ == "__main__":
-    list_1 = generate_random_list(10)
-    print(list_1)
-    reversed_insertion_sort(list_1)
-    print(list_1)
+def main():
+    # Flag to control the main application loop
+    is_continue = True
+    print("### Reversed Insertion Sort application ###")
 
-    list_2 = generate_random_list(20)
-    print(list_2)
-    reversed_insertion_sort_recursive(list_2, len(list_2))
-    print(list_2)
+    while (is_continue):
+        # Get user input for list size
+        print("Select your preferred list size: => ", end="")
+        try:
+            list_size = int(input())
+            if (list_size <= 0):
+                raise ValueError("List size must be a positive integer.")
+        except ValueError as e:
+            print(f"Invalid input. Please enter a valid integer. {e}")
+            continue
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            continue
+
+        # Generate a random list of integers based on user input
+        nums = generate_random_list(list_size)
+        print(f"Unsorted list generated: {nums}")
+        print()
+
+        # Display sorting options to the user
+        print("Select your preferred sorting implementation approach:")
+        print("    1. Iterative")
+        print("    2. Recursive")
+        print("    Select any other key to Exit")
+        print("=> ", end="")
+        user_input = input()
+
+        # Process user's choice
+        if (user_input == "1"):
+            reversed_insertion_sort(nums)
+            print(f"Sorted list: {nums}")
+        elif (user_input == "2"):
+            reversed_insertion_sort_recursive(nums, len(nums))
+            print(f"Sorted list: {nums}")
+        else:
+            print("Exiting the application...")
+            is_continue = False
+        print("\n\n#####################################################\n")
+
+
+# Entry point of the program
+if __name__ == "__main__":
+    main()
