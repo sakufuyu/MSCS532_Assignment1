@@ -1,4 +1,7 @@
 
+import random
+
+
 def reversed_insertion_sort(nums: list[int]) -> list[int]:
     """
     Sorts a list in descending order using the insertion sort algorithm.
@@ -50,8 +53,26 @@ def reversed_insertion_sort_recursive(nums: list[int], n: int) -> list[int]:
     nums[n+1] = temp
 
 
+def generate_random_list(size: int) -> list[int]:
+    """
+    Generates a list of random integers.
+
+    Args:
+        size: The number of random integers to generate.
+
+    Returns:
+        A list of random integers.
+    """
+    return [random.randint(0, 100) for _ in range(size)]
+
+
 if __name__ == "__main__":
-    nums = [2, 4, 6, 8, 3]
-    # reversed_insertion_sort(nums)
-    reversed_insertion_sort_recursive(nums, len(nums))
-    print(nums)
+    list_1 = generate_random_list(10)
+    print(list_1)
+    reversed_insertion_sort(list_1)
+    print(list_1)
+
+    list_2 = generate_random_list(20)
+    print(list_2)
+    reversed_insertion_sort_recursive(list_2, len(list_2))
+    print(list_2)
