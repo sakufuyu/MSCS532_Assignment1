@@ -47,7 +47,7 @@ Sorts a list in descending order using the recursive insertion sort algorithm.
 
 Generates a list of random integers between 0 and 100.
 
-## Example
+## Example output
 
 ```
 ### Reversed Insertion Sort application ###
